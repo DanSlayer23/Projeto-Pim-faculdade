@@ -267,7 +267,9 @@ def novo_login():
 def login_inicial():
     ask = input("Primerio acesso? ")
     if ask.lower() in {"sim", "s", "ss", "yes"}:
+        load_data()
         novo_login()
+        
     elif ask.lower() in {"não", "n", "no", "nao", "nn"}:
         login_existente()
     else:
@@ -379,6 +381,7 @@ def menu():
                 print("Nenhum usuário logado.")
 
         elif escolha == '5':
+            data[usuario]['login_final'] = datetime.now().isoformat()
             usuario = None
             pprint()
             print(' \033[1;35m-----VOCÊ ESTÁ SAINDO!!-----\033[m')
@@ -389,7 +392,7 @@ def menu():
                   '\n\033[1;32mAdriano Dias\033[m 😇'
                   '\n\033[1;32mDanilo Azevedo \033[m😜')
             pprint()
-            print('\033[1;32mAbrindo Outlock para lançar dados no gráfico!\033[m')
+            print('\033[1;32mAbrindo Outlook para lançar dados no gráfico!\033[m')
             pprint()
             send_email_with_attachments()
             pprint()
